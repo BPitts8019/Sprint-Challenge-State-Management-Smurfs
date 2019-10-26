@@ -1,12 +1,12 @@
 import {createStore, applyMiddleware, combineReducers} from "redux";
-import thunk from "react-thunk";
+import thunk from "redux-thunk"; //allows our action creators to be HOFs
 
 //reducers
-//import the reducers
+import smurfs from "./smurfs/smurfsReducer";
 
 //add multiple reducers here
 const rootReducer = combineReducers({
-   //some reducers
+   smurfs
 });
 
 //an array of all the middleware in the application
