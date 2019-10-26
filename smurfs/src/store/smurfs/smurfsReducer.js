@@ -40,6 +40,7 @@ export default (state = initialState, action) => {
       case ADD_SMURF_END:
          return {
             ...state,
+            village: action.payload,
             addingSmurf: false,
             error: NO_ERRORS
          };

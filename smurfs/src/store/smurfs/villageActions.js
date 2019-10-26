@@ -33,7 +33,7 @@ export function createSmurf (newSmurf) {
          .post("http://localhost:3333/smurfs", newSmurf)
          .then(response => {
             console.log(response);
-            dispatch({type: ADD_SMURF_END});
+            dispatch({type: ADD_SMURF_END, payload: response.data});
          })
          .catch(error => {
             dispatch({type: ADD_SMURF_ERROR, payload: error.response});

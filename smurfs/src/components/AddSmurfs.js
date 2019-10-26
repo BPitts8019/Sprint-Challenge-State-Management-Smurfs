@@ -24,6 +24,7 @@ function AddSmurfs ({createSmurf}) {
    const handleClick = event => {
       event.preventDefault();
       console.log(`Create a Smurf!! ${JSON.stringify(info, null, 3)}`);
+      createSmurf(info);
    };
 
    return (
