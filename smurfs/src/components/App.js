@@ -5,8 +5,9 @@ import "./App.css";
 //context
 
 //components
+import Village from "./Village";
 
-function App ({village, isLoading, error}) {
+function App ({error}) {
    return (
       <div className="App">
          <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -16,19 +17,13 @@ function App ({village, isLoading, error}) {
 
          {error && <div>{error}</div>}
 
-         {
-            (!isLoading && village && village.length > 0)
-            ?  <p>Display the village, population: ${village.length}</p>
-            :  <p>Loading...</p>
-         }
+         <Village />
       </div>
    );
 }
 
 const mapStateToProps = state => {
    return {
-      village: state.smurfs.village,
-      isLoading: state.smurfs.isLoading,
       error: state.smurfs.error
    };
 };
