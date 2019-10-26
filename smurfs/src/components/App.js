@@ -1,16 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
+import {connect} from "react-redux";
 import "./App.css";
-class App extends Component {
-  render() {
-    return (
+
+//components
+import Village from "./Village";
+import AddSmurfs from "./AddSmurfs";
+
+function App ({error}) {
+   return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+         {error && <div className="error">{error}</div>}
+
+         <AddSmurfs />
+         <Village />
       </div>
-    );
-  }
+   );
 }
 
-export default App;
+const mapStateToProps = state => {
+   return {
+      error: state.smurfs.error
+   };
+};
+
+export default connect(mapStateToProps)(App);
