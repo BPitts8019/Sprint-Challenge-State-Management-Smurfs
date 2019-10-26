@@ -10,12 +10,23 @@ import Village from "./Village";
 function App ({error}) {
    return (
       <div className="App">
-         <h1>SMURFS! 2.0 W/ Redux</h1>
-         <div>Welcome to your state management version of Smurfs!</div>
-         <div>Start inside of your `src/index.js` file!</div>
-         <div>Have fun!</div>
+         {error && <div className="error">{error}</div>}
 
-         {error && <div>{error}</div>}
+         <form name="addSmurf">
+            <label>
+               Name:
+               <input type="text" />
+            </label>
+            <label>
+               Height:
+               <input type="number" min="0.1" placeholder="in centimeters" />
+            </label>
+            <label>
+               Age: 
+               <input type="number" min="0" />
+            </label>
+            <button type="submit" onClick={event => {event.preventDefault()}}>Add Smurf</button>
+         </form>
 
          <Village />
       </div>
