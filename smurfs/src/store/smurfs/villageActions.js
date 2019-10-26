@@ -2,7 +2,10 @@ import axios from "axios";
 import {
    FETCH_VILLAGE_START,
    FETCH_VILLAGE_END,
-   FETCH_VILLAGE_ERROR
+   FETCH_VILLAGE_ERROR,
+   ADD_SMURF_START,
+   ADD_SMURF_END,
+   ADD_SMURF_ERROR
 } from "./actionTypes";
 
 export function fetchVillage () {
@@ -21,18 +24,19 @@ export function fetchVillage () {
    };
 };
 
-export function addSmurf () {
+export function createSmurf (newSmurf) {
    return dispatch => {
-      dispatch({type: FETCH_VILLAGE_START});
+      dispatch({type: ADD_SMURF_START});
    
       //axios call
       axios
-         .get("http://localhost:3333/smurfs")
+         .post("http://localhost:3333/smurfs", newSmurf)
          .then(response => {
-            dispatch({type: FETCH_VILLAGE_END, payload: response.data});
+            console.log(response);
+            dispatch({type: ADD_SMURF_END});
          })
          .catch(error => {
-            dispatch({type: FETCH_VILLAGE_ERROR, payload: error.response});
+            dispatch({type: ADD_SMURF_ERROR, payload: error.response});
          })
    };
 };

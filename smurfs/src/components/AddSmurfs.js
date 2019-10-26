@@ -2,8 +2,13 @@ import React from "react";
 import {connect} from "react-redux";
 
 //context
+import {createSmurf} from "../store/smurfs/villageActions";
 
-function AddSmurfs ({name, age, height}) {
+function AddSmurfs ({createSmurf}) {
+   const handleClick = event => {
+      event.preventDefault();
+      createSmurf();
+   };
    return (
       <form name="addSmurfs">
          <label>
@@ -18,10 +23,13 @@ function AddSmurfs ({name, age, height}) {
             Age: 
             <input type="number" min="0" />
          </label>
-         <button type="submit" onClick={event => {event.preventDefault()}}>Add Smurf</button>
+         <button type="submit" onClick={handleClick}>Add Smurf</button>
       </form>
    );
 }
 
+const mapDispatchToProps = {
+   createSmurf
+}
 
-export default AddSmurfs;
+export default connect(null, mapDispatchToProps)(AddSmurfs);

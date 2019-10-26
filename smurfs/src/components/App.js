@@ -2,8 +2,6 @@ import React from "react";
 import {connect} from "react-redux";
 import "./App.css";
 
-//context
-
 //components
 import Village from "./Village";
 import AddSmurfs from "./AddSmurfs";
