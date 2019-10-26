@@ -10,13 +10,21 @@ export function fetchVillage () {
       dispatch({type: FETCH_VILLAGE_START});
    
       //axios call
-      setTimeout(() => {
-         dispatch({type: FETCH_VILLAGE_END, payload: [
-            {name: "Barney"},
-            {name: "Bill"},
-            {name: "Ted"},
-         ]});
-      }, 1500);
+      axios
+         .get("http://localhost:3333/smurfs")
+         .then(response => {
+            dispatch({type: FETCH_VILLAGE_END, payload: response.data});
+         })
+         .catch(error => {
+            dispatch({type: FETCH_VILLAGE_ERROR, payload: error.response});
+         })
+      // setTimeout(() => {
+      //    dispatch({type: FETCH_VILLAGE_END, payload: [
+      //       {name: "Barney"},
+      //       {name: "Bill"},
+      //       {name: "Ted"},
+      //    ]});
+      // }, 1500);
       // dispatch(FETCH_VILLAGE_ERROR);
    };
 };
